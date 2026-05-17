@@ -1,26 +1,170 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* Arabic Quran fonts */
+@font-face {
+  font-family: "Amiri Quran";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/amiriquran/v15/_Xmo-Hk0rD6DbUL4_vH8Zp5v.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Scheherazade New";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/scheherazadenew/v15/4UaZrFhTvxVnHDvUkUiHg8jprP4DCwNsOl4p5Is.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Noto Naskh Arabic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/notonaskharabic/v34/RrQ5bpV-9Dd1b1OAGA6M9PkyDuVBePeKNaxcsss0Y7bwvc5e3VsCvDS_.woff2") format("woff2");
 }
 
 @theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-surah-active: var(--surah-active);
+  --color-surah-active-border: var(--surah-active-border);
+
+  --font-arabic: var(--arabic-font), "Amiri Quran", "Scheherazade New", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* DARK (default, matches QuranMazid reference) */
+:root,
+.dark {
+  --radius: 0.75rem;
+
+  --background: oklch(0.16 0.005 160);
+  --foreground: oklch(0.95 0.005 160);
+
+  --card: oklch(0.195 0.006 160);
+  --card-foreground: oklch(0.95 0.005 160);
+
+  --popover: oklch(0.20 0.008 160);
+  --popover-foreground: oklch(0.95 0.005 160);
+
+  --primary: oklch(0.66 0.16 145);
+  --primary-foreground: oklch(0.10 0.02 145);
+
+  --secondary: oklch(0.24 0.008 160);
+  --secondary-foreground: oklch(0.95 0.005 160);
+
+  --muted: oklch(0.22 0.006 160);
+  --muted-foreground: oklch(0.62 0.015 160);
+
+  --accent: oklch(0.26 0.02 145);
+  --accent-foreground: oklch(0.95 0.005 160);
+
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.98 0.005 160);
+
+  --border: oklch(0.26 0.008 160);
+  --input: oklch(0.24 0.008 160);
+  --ring: oklch(0.66 0.16 145);
+
+  --sidebar: oklch(0.18 0.006 160);
+  --sidebar-foreground: oklch(0.92 0.005 160);
+  --sidebar-border: oklch(0.24 0.008 160);
+
+  --surah-active: oklch(0.28 0.06 145);
+  --surah-active-border: oklch(0.55 0.14 145);
+
+  /* Tajweed colors (approximate QuranMazid palette) */
+  --tafkhim: #c084fc;
+  --meemIzhar: #f87171;
+  --idghamWithGhunnah: #facc15;
+  --idghamWithoutGhunnah: #fb923c;
+  --ghunnah: #34d399;
+  --qalqalah: #38bdf8;
+  --ikhfa: #ec4899;
+  --silent: #6b7280;
+  --hamzaWasl: #94a3b8;
+  --laamShamsiyah: #f472b6;
+  --madd2: #60a5fa;
+  --madd246: #818cf8;
+  --madd6: #a78bfa;
+}
+
+.light {
+  --background: oklch(0.99 0.003 160);
+  --foreground: oklch(0.18 0.01 160);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 160);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 160);
+  --primary: oklch(0.56 0.16 145);
+  --primary-foreground: oklch(0.99 0.005 160);
+  --secondary: oklch(0.95 0.006 160);
+  --secondary-foreground: oklch(0.18 0.01 160);
+  --muted: oklch(0.95 0.006 160);
+  --muted-foreground: oklch(0.45 0.012 160);
+  --accent: oklch(0.92 0.04 145);
+  --accent-foreground: oklch(0.18 0.01 160);
+  --border: oklch(0.90 0.008 160);
+  --input: oklch(0.92 0.008 160);
+  --ring: oklch(0.56 0.16 145);
+  --sidebar: oklch(0.97 0.005 160);
+  --sidebar-foreground: oklch(0.18 0.01 160);
+  --sidebar-border: oklch(0.90 0.008 160);
+  --surah-active: oklch(0.92 0.06 145);
+  --surah-active-border: oklch(0.56 0.14 145);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.arabic-text {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  line-height: 2.1;
+  font-feature-settings: "kern", "liga", "calt";
 }
+
+/* Hide scrollbar but keep scroll */
+.scroll-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 9999px; }
+.scroll-thin::-webkit-scrollbar-track { background: transparent; }
