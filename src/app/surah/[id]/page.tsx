@@ -89,24 +89,26 @@ function SurahHeader({ surahId }: { surahId: number }) {
   const surah = getSurah(surahId)!;
 
   return (
-    <header className="text-center pt-10 pb-8 px-4 relative">
+    <header className="text-center w-full flex   pt-10 pb-8 px-4 relative">
       <KaabaIllustration />
 
-      <h1 className="text-2xl md:text-3xl font-bold mt-4 bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
+     <div className="items-center justify-center mx-auto ">
+       <h1 className="text-2xl md:text-2xl font-bold mt-4 bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
         Surah {surah.nameEnglish}
       </h1>
 
       <p className="text-sm text-muted-foreground mt-1">
         Ayah-{surah.ayahCount}, {surah.revelation}
       </p>
+     </div>
     </header>
   );
 }
 
 function KaabaIllustration() {
   return (
-    <div className="">
-    <img src="/assest/makkah.avif" alt="" className="object-contain" />
+    <div className="items-start absolute ">
+    <img src="/assest/makkah.avif" alt="" className="kabba-image" />
     </div>
   );
 }

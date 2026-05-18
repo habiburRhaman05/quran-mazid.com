@@ -187,3 +187,11 @@
 .scroll-thin::-webkit-scrollbar-track {
   background: transparent;
 }
+
+.kabba-image{
+ 
+    filter: invert() sepia() hue-rotate(179deg);
+    mix-blend-mode: difference;
+    width: 140px;
+
+}
