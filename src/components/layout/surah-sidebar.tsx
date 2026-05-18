@@ -30,9 +30,9 @@ export function SurahSidebar({ onNavigate,currentId }: { onNavigate?: () => void
   }, [q]);
 
   return (
-    <div className="flex flex-col h-full w-full bg-sidebar">
+    <div className="flex flex-col h-full w-full  bg-background ">
      
-      <div className="p-3 pb-2 space-y-3">
+      <div className="px-6 py-3 pb-2 space-y-3">
         <div className="grid grid-cols-3 rounded-full bg-muted p-1 text-sm">
           {(["Surah", "Juz", "Page"] as Tab[]).map((t) => (
             <button
@@ -40,7 +40,7 @@ export function SurahSidebar({ onNavigate,currentId }: { onNavigate?: () => void
               onClick={() => setTab(t)}
               className={cn(
                 "py-1.5 rounded-full transition-colors",
-                tab === t ? "bg-card text-foreground shadow" : "text-muted-foreground hover:text-foreground",
+                tab === t ? "bg-black/50 text-foreground shadow" : "text-muted-foreground hover:text-foreground",
               )}
             >
               {t}
@@ -58,7 +58,7 @@ export function SurahSidebar({ onNavigate,currentId }: { onNavigate?: () => void
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto scroll-thin px-2 pb-4 space-y-1.5">
+      <div className="flex-1 overflow-y-auto mt-2 scroll-thin px-6 pb-4 space-y-1.5">
         {tab !== "Surah" ? (
           <div className="text-center text-xs text-muted-foreground py-10">
             {tab} view coming soon
@@ -73,8 +73,8 @@ export function SurahSidebar({ onNavigate,currentId }: { onNavigate?: () => void
               
                 onClick={onNavigate}
                 className={cn(
-                  "flex items-center gap-3 rounded-xl px-2.5 py-2.5 border border-transparent hover:bg-accent/60 transition-colors",
-                  active && "bg-surah-active border-surah-active-border",
+                  "flex items-center gap-3 rounded-md p-4 border  hover:bg-accent/60 transition-colors",
+                  active && "bg-surah-active/40 border-surah-active-border",
                 )}
               >
                 <NumberBadge n={s.id} active={active} />

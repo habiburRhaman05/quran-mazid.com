@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-
 /* Arabic Quran fonts */
 @font-face {
   font-family: "Amiri Quran";
@@ -58,15 +57,18 @@
   --color-surah-active: var(--surah-active);
   --color-surah-active-border: var(--surah-active-border);
 
-  --font-arabic: var(--arabic-font), "Amiri Quran", "Scheherazade New", serif;
+  /* Default UI font = Inter */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  /* Arabic fallback stack only for Quran text */
+  --font-arabic: var(--arabic-font), "Amiri Quran", "Scheherazade New", "Noto Naskh Arabic", serif;
 }
 
-/* DARK (default, matches QuranMazid reference) */
 :root,
 .dark {
   --radius: 0.75rem;
 
-  --background: oklch(0.16 0.005 160);
+  --background: #0d0d0d;
   --foreground: oklch(0.95 0.005 160);
 
   --card: oklch(0.195 0.006 160);
@@ -101,7 +103,6 @@
   --surah-active: oklch(0.28 0.06 145);
   --surah-active-border: oklch(0.55 0.14 145);
 
-  /* Tajweed colors (approximate QuranMazid palette) */
   --tafkhim: #c084fc;
   --meemIzhar: #f87171;
   --idghamWithGhunnah: #facc15;
@@ -146,14 +147,21 @@
   * {
     border-color: var(--color-border);
   }
-  html, body, #root {
+
+  html,
+  body,
+  #root {
     height: 100%;
   }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-sans);
   }
 }
 
@@ -165,6 +173,14 @@
 }
 
 /* Hide scrollbar but keep scroll */
-.scroll-thin::-webkit-scrollbar { width: 6px; height: 6px; }
-.scroll-thin::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 9999px; }
-.scroll-thin::-webkit-scrollbar-track { background: transparent; }
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}

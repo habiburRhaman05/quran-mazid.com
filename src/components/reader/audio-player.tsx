@@ -1,3 +1,4 @@
+"use client"
 import { Play, Pause, SkipBack, SkipForward, X } from "lucide-react";
 import { useAudio, formatTime } from "@/lib/audio-store";
 import { getSurah } from "@/lib/surahs";
@@ -19,7 +20,7 @@ export function AudioPlayer() {
   const surah = getSurah(surahId);
 
   return (
-    <div className="h-16 shrink-0 border-t border-border bg-sidebar/95 backdrop-blur flex items-center gap-3 px-4">
+    <div className="h-20 shrink-0  bg-sidebar/95 backdrop-blur flex items-center gap-3 px-4">
       <div className="hidden sm:block min-w-[120px] text-sm">
         <span className="text-muted-foreground">{surah?.nameEnglish} :</span>{" "}
         <span className="font-semibold">{ayahId}</span>

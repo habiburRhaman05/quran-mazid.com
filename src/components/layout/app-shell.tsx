@@ -20,14 +20,44 @@ export function AppShell({children}:{children:React.ReactNode}) {
 
   
   return (
-    <div className="flex h-full w-full overflow-hidden">
+    <div className="flex max-h-[93%] overflow-hidden w-full ]">
     
-      <IconRail />
-      <div className="flex-1">
+ 
+       <IconRail /> 
+      <div className="flex-1 h-screen flex flex-col bg-background border-b w-full ">
         <Header onOpenMobileNav={()=> setNavOpen(true)}/>
+    
+    
+  
+
+
+   <div className="w-full h-full flex ">
+       <aside className="hidden h-full lg:flex w-[350px] shrink-0 border-r border-sidebar-border">
+        <Suspense>
+          <SurahSidebar currentId={Number(surahId)} />
+        </Suspense>
+      </aside>
+
+      <div className="flex-1 flex flex-col min-w-0">
+        
+        <main className="flex-1 overflow-y-auto scroll-thin">
+          {children}
+        </main>
+        <AudioPlayer />
       </div>
 
-    
+      {/* Desktop right panel */}
+      <aside className="hidden xl:flex w-[340px] shrink-0 border-l border-sidebar-border">
+        <RightPanel />
+      </aside>
+       
+     
+
+        </div>
+        
+     </div>
+
+  
       {/* Mobile drawers */}
       <Sheet open={navOpen} onOpenChange={setNavOpen}>
         <SheetContent side="left" className="p-0 w-[320px] bg-sidebar border-sidebar-border">
@@ -40,7 +70,7 @@ export function AppShell({children}:{children:React.ReactNode}) {
         </SheetContent>
       </Sheet>
 
-
+      {/* Mobile floating settings button (xl- only) */}
       <button
         onClick={() => setPanelOpen(true)}
         className="xl:hidden fixed bottom-20 right-4 size-12 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center z-30"
@@ -50,6 +80,7 @@ export function AppShell({children}:{children:React.ReactNode}) {
       </button>
 
       <SearchModal />
+      
     </div>
   );
 }

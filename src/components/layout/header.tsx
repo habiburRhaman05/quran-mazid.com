@@ -11,7 +11,7 @@ export function Header({ onOpenMobileNav }: { onOpenMobileNav?: () => void }) {
   const openSearch = useSearchModal((s) => s.open);
 
   return (
-    <header className="h-16 shrink-0 border-b border-sidebar-border bg-sidebar/80 backdrop-blur flex items-center justify-between px-4 md:px-6 gap-3">
+    <header className="h-16 shrink-0 border-b border-sidebar-border  backdrop-blur flex items-center justify-between px-4 md:px-6 gap-3">
       <div className="flex items-center gap-3 min-w-0">
         <Button
           variant="ghost"

@@ -32,6 +32,7 @@ export function AyahRow({ ayah, queue }: { ayah: any; queue: number[] }) {
         isActive && "bg-surah-active/40",
       )}
     >
+      {arabicFont}
       <div className="flex items-start gap-2 mb-3">
         <span className="text-primary font-semibold text-sm">
           {ayah.surahId}:{ayah.ayahId}

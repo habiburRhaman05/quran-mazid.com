@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 
 import { AyahList } from "@/components/layout/ayatList";
 import { getSurah, SURAHS } from "@/lib/surahs";
+import { AudioPlayer } from "@/components/reader/audio-player";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -70,12 +71,14 @@ export default async function SurahPage({
   }
 
   return (
-    <article className="mx-auto max-w-3xl pb-24">
+    <article className="mx-auto px-4 pb-24">
       <SurahHeader surahId={surahId} />
 
       <AyahList surahId={surahId} />
 
       <Pagination current={surahId} total={SURAHS.length} />
+
+
 
       <span className="sr-only">Surah {surah.nameEnglish}</span>
     </article>
@@ -102,22 +105,8 @@ function SurahHeader({ surahId }: { surahId: number }) {
 
 function KaabaIllustration() {
   return (
-    <div className="relative inline-block">
-      <svg
-        viewBox="0 0 200 110"
-        className="w-44 h-24 opacity-30 mx-auto"
-        fill="none"
-        stroke="currentColor"
-      >
-        <rect x="70" y="50" width="60" height="50" strokeWidth="1.5" />
-        <path d="M70 60h60" strokeWidth="1" />
-        <path d="M40 100h120" strokeWidth="1" />
-        <path d="M100 30v20M85 38l15-8 15 8" strokeWidth="1" />
-        <circle cx="20" cy="80" r="12" strokeWidth="1" />
-        <circle cx="180" cy="80" r="12" strokeWidth="1" />
-        <path d="M30 50c0 5-3 8-8 8" strokeWidth="1" />
-        <path d="M170 50c0 5 3 8 8 8" strokeWidth="1" />
-      </svg>
+    <div className="">
+    <img src="/assest/makkah.avif" alt="" className="object-contain" />
     </div>
   );
 }
