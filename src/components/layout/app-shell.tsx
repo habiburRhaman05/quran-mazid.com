@@ -23,27 +23,11 @@ export function AppShell({children}:{children:React.ReactNode}) {
     <div className="flex h-full w-full overflow-hidden">
     
       <IconRail />
-
-      {/* Desktop surah sidebar */}
-      <aside className="hidden lg:flex w-[320px] shrink-0 border-r border-sidebar-border">
-        <Suspense>
-          <SurahSidebar currentId={Number(surahId)} />
-        </Suspense>
-      </aside>
-
-      <div className="flex-1 flex flex-col min-w-0">
-        <Header onOpenMobileNav={() => setNavOpen(true)} />
-        <main className="flex-1 overflow-y-auto scroll-thin">
-          {children}
-        </main>
-        <AudioPlayer />
+      <div className="flex-1">
+        <Header onOpenMobileNav={()=> setNavOpen(true)}/>
       </div>
 
-      {/* Desktop right panel */}
-      <aside className="hidden xl:flex w-[340px] shrink-0 border-l border-sidebar-border">
-        <RightPanel />
-      </aside>
-
+    
       {/* Mobile drawers */}
       <Sheet open={navOpen} onOpenChange={setNavOpen}>
         <SheetContent side="left" className="p-0 w-[320px] bg-sidebar border-sidebar-border">
@@ -56,7 +40,7 @@ export function AppShell({children}:{children:React.ReactNode}) {
         </SheetContent>
       </Sheet>
 
-      {/* Mobile floating settings button (xl- only) */}
+
       <button
         onClick={() => setPanelOpen(true)}
         className="xl:hidden fixed bottom-20 right-4 size-12 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center z-30"

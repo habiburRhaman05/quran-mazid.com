@@ -7,16 +7,22 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AppProvider from "@/components/wrapper";
 import { ThemeAndFontProvider } from "@/components/theme-provider";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
+  display: "swap",
+  variable: "--font-inter",
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  fallback: [
+    "system-ui",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Roboto",
+    "Helvetica Neue",
+    "Arial",
+    "sans-serif",
+  ],
 });
 
 export const metadata: Metadata = {
@@ -33,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn("h-full",inter.variable, "font-sans","antialiased" )}
     >
       <body className="min-h-full flex flex-col">
 <AppProvider >

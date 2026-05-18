@@ -23,11 +23,9 @@ export function Header({ onOpenMobileNav }: { onOpenMobileNav?: () => void }) {
           <Menu className="size-5" />
         </Button>
         <Link href="/" className="flex items-center gap-3 min-w-0">
-          <div className="size-10 rounded-lg bg-primary/20 text-primary flex items-center justify-center">
-            <BookIcon />
-          </div>
+         
           <div className="leading-tight min-w-0">
-            <div className="font-semibold text-base truncate">Quran Mazid</div>
+            <div className="font-bold  text-xl truncate">Quran Mazid</div>
             <div className="text-[11px] text-muted-foreground truncate">
               Read, Study, and Learn The Quran
             </div>
