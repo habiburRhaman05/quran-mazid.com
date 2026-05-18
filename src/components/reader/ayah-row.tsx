@@ -32,7 +32,7 @@ export function AyahRow({ ayah, queue }: { ayah: any; queue: number[] }) {
         isActive && "bg-surah-active/40",
       )}
     >
-      {arabicFont}
+      
       <div className="flex items-start gap-2 mb-3">
         <span className="text-primary font-semibold text-sm">
           {ayah.surahId}:{ayah.ayahId}
@@ -66,7 +66,10 @@ export function AyahRow({ ayah, queue }: { ayah: any; queue: number[] }) {
           {/* Arabic — right aligned */}
           <p
             className="arabic-text text-right leading-loose"
-            style={{ fontSize: `${arabicSize}px`, fontFamily: `"${arabicFont}", "Amiri Quran", "Scheherazade New", serif` }}
+            style={{
+              fontFamily:""
+            }}
+            // style={{ fontSize: `${arabicSize}px`, fontFamily: `"${arabicFont}", "Amiri Quran", "Scheherazade New", serif` }}
           >
             <span dangerouslySetInnerHTML={{ __html: arabicHtml }} />{" "}
             <span className="inline-flex items-center justify-center mx-1 size-9 text-base text-primary border border-primary/60 rounded-full">

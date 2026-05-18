@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -9,6 +10,7 @@
   font-display: swap;
   src: url("https://fonts.gstatic.com/s/amiriquran/v15/_Xmo-Hk0rD6DbUL4_vH8Zp5v.woff2") format("woff2");
 }
+
 @font-face {
   font-family: "Scheherazade New";
   font-style: normal;
@@ -67,7 +69,7 @@
 :root,
 .dark {
   --radius: 0.75rem;
-
+  --icon-background:  hsl(150, 25%, 98%);
   --background: #0d0d0d;
   --foreground: oklch(0.95 0.005 160);
 
@@ -119,8 +121,9 @@
 }
 
 .light {
-  --background: oklch(0.99 0.003 160);
+  --background: hsl(150, 25%, 98%);
   --foreground: oklch(0.18 0.01 160);
+  --icon-background: #171717;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.18 0.01 160);
   --popover: oklch(1 0 0);

@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { Play, Pause, SkipBack, SkipForward, X } from "lucide-react";
 import { useAudio, formatTime } from "@/lib/audio-store";
 import { getSurah } from "@/lib/surahs";
@@ -17,49 +18,115 @@ export function AudioPlayer() {
   const seek = useAudio((s) => s.seek);
 
   if (!surahId || ayahId == null) return null;
+
   const surah = getSurah(surahId);
 
   return (
-    <div className="h-20 shrink-0  bg-sidebar/95 backdrop-blur flex items-center gap-3 px-4">
-      <div className="hidden sm:block min-w-[120px] text-sm">
-        <span className="text-muted-foreground">{surah?.nameEnglish} :</span>{" "}
-        <span className="font-semibold">{ayahId}</span>
+    <div
+      className="
+        h-20 w-full shrink-0 relative
+        flex items-center gap-3
+        border-t border-border
+        bg-background/95
+        text-foreground
+        backdrop-blur supports-[backdrop-filter]:bg-background/90
+      "
+    >
+      {/* Progress Slider */}
+      <Slider
+        value={[Math.min(currentTime, duration || 0)]}
+        min={0}
+        max={duration || 0.001}
+        step={0.1}
+        onValueChange={(v) => seek(v[0])}
+        className="absolute top-0 left-0 right-0 cursor-pointer"
+      />
+
+      {/* Surah Info */}
+      <div className="hidden sm:block min-w-[140px] text-sm absolute left-6">
+        <span className="text-muted-foreground">
+          {surah?.nameEnglish}:
+        </span>{" "}
+        <span className="font-semibold text-foreground">
+          {ayahId}
+        </span>
       </div>
 
-      <div className="flex-1 flex items-center gap-3">
-        <span className="text-xs text-muted-foreground tabular-nums w-12 text-right">
+      {/* Controls */}
+      <div className="mx-auto flex items-center gap-4 sm:gap-6">
+        {/* Current Time */}
+        <span className="w-12 text-right text-xs tabular-nums text-muted-foreground">
           {formatTime(currentTime)}
         </span>
-        <Slider
-          value={[Math.min(currentTime, duration || 0)]}
-          min={0}
-          max={duration || 0.001}
-          step={0.1}
-          onValueChange={(v) => seek(v[0])}
-          className="flex-1"
-        />
-        <span className="text-xs text-muted-foreground tabular-nums w-12">
-          {formatTime(duration)}
-        </span>
-      </div>
 
-      <div className="flex items-center gap-1">
-        <button onClick={prev} className="size-9 rounded-full hover:bg-accent flex items-center justify-center" aria-label="Previous">
+        {/* Previous */}
+        <button
+          onClick={prev}
+          aria-label="Previous"
+          className="
+            flex size-9 items-center justify-center rounded-full
+            text-foreground
+            hover:bg-accent
+            hover:text-accent-foreground
+            transition-colors
+          "
+        >
           <SkipBack className="size-4" />
         </button>
+
+        {/* Play / Pause */}
         <button
           onClick={toggle}
-          className="size-10 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center"
           aria-label={isPlaying ? "Pause" : "Play"}
+          className="
+            flex size-10 items-center justify-center rounded-full
+            bg-primary text-primary-foreground
+            hover:bg-primary/90
+            transition-colors
+            shadow-sm
+          "
         >
-          {isPlaying ? <Pause className="size-5" /> : <Play className="size-5 ml-0.5" />}
+          {isPlaying ? (
+            <Pause className="size-5" />
+          ) : (
+            <Play className="size-5 ml-0.5" />
+          )}
         </button>
-        <button onClick={next} className="size-9 rounded-full hover:bg-accent flex items-center justify-center" aria-label="Next">
+
+        {/* Next */}
+        <button
+          onClick={next}
+          aria-label="Next"
+          className="
+            flex size-9 items-center justify-center rounded-full
+            text-foreground
+            hover:bg-accent
+            hover:text-accent-foreground
+            transition-colors
+          "
+        >
           <SkipForward className="size-4" />
         </button>
-        <button onClick={stop} className="size-9 rounded-full hover:bg-accent flex items-center justify-center" aria-label="Stop">
+
+        {/* Stop */}
+        <button
+          onClick={stop}
+          aria-label="Stop"
+          className="
+            flex size-9 items-center justify-center rounded-full
+            text-foreground
+            hover:bg-accent
+            hover:text-accent-foreground
+            transition-colors
+          "
+        >
           <X className="size-4" />
         </button>
+
+        {/* Duration */}
+        <span className="w-12 text-xs tabular-nums text-muted-foreground">
+          {formatTime(duration)}
+        </span>
       </div>
     </div>
   );

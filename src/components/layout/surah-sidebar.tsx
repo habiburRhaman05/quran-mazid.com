@@ -30,7 +30,7 @@ export function SurahSidebar({ onNavigate,currentId }: { onNavigate?: () => void
   }, [q]);
 
   return (
-    <div className="flex flex-col h-full w-full  bg-background ">
+    <div className="flex flex-col  w-full  bg-background ">
      
       <div className="px-6 py-3 pb-2 space-y-3">
         <div className="grid grid-cols-3 rounded-full bg-muted p-1 text-sm">
@@ -40,7 +40,7 @@ export function SurahSidebar({ onNavigate,currentId }: { onNavigate?: () => void
               onClick={() => setTab(t)}
               className={cn(
                 "py-1.5 rounded-full transition-colors",
-                tab === t ? "bg-black/50 text-foreground shadow" : "text-muted-foreground hover:text-foreground",
+                tab === t ? "bg-background text-foreground shadow" : "text-muted-foreground hover:text-foreground",
               )}
             >
               {t}

@@ -39,7 +39,7 @@ export default function RootLayout({
         <AppProvider>
           <ThemeAndFontProvider>
             <AppShell>{children}</AppShell>
-            <AudioPlayer />
+           
           </ThemeAndFontProvider>
         </AppProvider>
       </body>

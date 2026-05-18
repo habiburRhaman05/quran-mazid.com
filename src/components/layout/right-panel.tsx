@@ -27,7 +27,7 @@ export function RightPanel() {
   }
 
   return (
-    <div className="flex flex-col h-full w-full bg-sidebar p-3 gap-3">
+    <div className="flex flex-col w-full bg-background p-3 gap-3">
       <div className="grid grid-cols-2 rounded-full bg-muted p-1 text-sm">
         {(["Translation", "Reading"] as Tab[]).map((t) => (
           <button
